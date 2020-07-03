@@ -1,34 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>E-commerce proto</title>
-  <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+  <link href="styles.css" rel="stylesheet">
 </head>
 
-<body class="p-5">
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-md navbar-light bg-white">
+    <a class="navbar-brand p-1" href="#">
+      <img src="pngflow.com (2).png" width="60" height="60" class="d-inline-block p-1" alt="logo">
+      KNOT
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-  
-<script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-      integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-      integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-      crossorigin="anonymous"
-    ></script>
+    <div class="collapse navbar-collapse justify-content-end align-items-center" id="navbarSupportedContent">
+      <a class="nav-link btn btn-light align-items-center" href="#"><svg width="2em" height="2em" viewBox="0 0 16 16"
+          class="bi bi-cart3 p-1" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd"
+            d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+        </svg>Ir al carrito</a>
+      <a class="nav-link align-items-center btn btn-outline-dark" href="#">
+        <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-emoji-frown p-1" fill="currentColor"
+          xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+          <path fill-rule="evenodd"
+            d="M4.285 12.433a.5.5 0 0 0 .683-.183A3.498 3.498 0 0 1 8 10.5c1.295 0 2.426.703 3.032 1.75a.5.5 0 0 0 .866-.5A4.498 4.498 0 0 0 8 9.5a4.5 4.5 0 0 0-3.898 2.25.5.5 0 0 0 .183.683z" />
+          <path
+            d="M7 6.5C7 7.328 6.552 8 6 8s-1-.672-1-1.5S5.448 5 6 5s1 .672 1 1.5zm4 0c0 .828-.448 1.5-1 1.5s-1-.672-1-1.5S9.448 5 10 5s1 .672 1 1.5z" />
+        </svg> Salir</a>
+    </div>
+  </nav>
+
+  <div class="container-fluid p-4">
+    <div class="row">
+      <!-- Sidebar -->
+      <div class="d-none d-lg-block col-lg-3 p-3">
+        <!-- search bar with underline -->
+        <div class="input-group">
+          <div class="input-group-append">
+            <div class="input-group-text" id="btnGroupAddon"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd"
+                  d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+                <path fill-rule="evenodd"
+                  d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+              </svg>
+            </div>
+          </div>
+          <input type="search" class="form-control" placeholder="Buscar..." aria-label="Buscar..."
+            aria-describedby="btnGroupAddon">
+        </div>
+        <hr>
+        <!-- List with Title -->
+        <h4>Categorias:</h4><br>
+        <div class="list-group">
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Men <span class="badge badge-light badge-pill">5</span> </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Women <span class="badge badge-light badge-pill">3</span> </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Kids <span class="badge badge-light badge-pill">1</span> </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Casual <span class="badge badge-light badge-pill">2</span> </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Formal <span class="badge badge-light badge-pill">1</span> </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Sport <span class="badge badge-light badge-pill">1</span> </a>
+          <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+            Unisex <span class="badge badge-light badge-pill">4</span> </a>
+        </div>
+
+      </div>
+      <!-- Search Bar -->
+      <div class="input-group d-lg-none mr-auto p-3">
+        <div class="input-group-append">
+          <div class="input-group-text" id="btnGroupAddon"><svg width="1em" height="1em" viewBox="0 0 16 16"
+              class="bi bi-search" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z" />
+              <path fill-rule="evenodd"
+                d="M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z" />
+            </svg>
+          </div>
+        </div>
+        <input type="search" class="form-control" placeholder="Buscar..." aria-label="Buscar..."
+          aria-describedby="btnGroupAddon">
+      </div><br>
+      <div class="container-fluid col-lg-9">
+        <!-- carousel -->
+        <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/banner-slider-1.jpg"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/banner-slider-2.jpg"
+                class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/banner-slider-3.jpg"
+                class="d-block w-100" alt="...">
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+        <!-- Card Grid -->
+        <div class="row row-cols-2 row-cols-sm-3 p-3">
+          <!-- Card 1 -->
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-1.jpg" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Militia brown</h5>
+                <p class="card-text">Brown shirt with star design.</p>
+                <div class=" row d-flex justify-content-around p-1">
+                  <button type="button" class="btn btn-secondary ">14$US<svg width="1em" height="1em"
+                      viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg></button>
+                  <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                    data-target="#exampleModalCenter1">
+                    Detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 2 -->
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-2.jpg" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Snake texture</h5>
+                <p class="card-text">Shirt in brown and green combination.</p>
+                <div class=" row d-flex justify-content-around p-1">
+                  <button type="button" class="btn btn-secondary ">10$US<svg width="1em" height="1em"
+                      viewBox="0 0 16 16" class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg></button>
+                  <button type="button" class="btn btn-outline-dark " data-toggle="modal"
+                    data-target="#exampleModalCenter2">
+                    Detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 3 -->
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-3.jpg" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Vinyl Horse</h5>
+                <p class="card-text">Light blue shirt.</p>
+                <div class=" row d-flex justify-content-around p-1">
+
+                  <button type="button" class="btn btn-secondary">10$US<svg width="1em" height="1em" viewBox="0 0 16 16"
+                      class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg></button>
+                  <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                    data-target="#exampleModalCenter3">
+                    Detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 4 -->
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-4.jpg" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Aerosmith</h5>
+                <p class="card-text">White shirt with logo.</p>
+                <div class=" row d-flex justify-content-around p-1">
+
+                  <button type="button" class="btn btn-secondary">15$US<svg width="1em" height="1em" viewBox="0 0 16 16"
+                      class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg></button>
+                  <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                    data-target="#exampleModalCenter4">
+                    Detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Card 5 -->
+          <div class="col mb-4">
+            <div class="card h-100">
+              <img src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-5.jpg" class="card-img-top"
+                alt="...">
+              <div class="card-body">
+                <h5 class="card-title">Fire 'Chilena'</h5>
+                <p class="card-text">Black shirt with logo.</p>
+                <div class=" row d-flex justify-content-around p-1">
+
+                  <button type="button" class="btn btn-secondary">15$US<svg width="1em" height="1em" viewBox="0 0 16 16"
+                      class="bi bi-cart3" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd"
+                        d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2z" />
+                    </svg></button>
+                  <button type="button" class="btn btn-outline-dark" data-toggle="modal"
+                    data-target="#exampleModalCenter5">
+                    Detalles
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal 1 -->
+        <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Militia brown</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Alert 1 -->
+                <div class="alert alert-info" role="alert"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                  </svg>
+                  Hurry! last of stock!
+                </div>
+                <!-- img and general info 1 -->
+                <div class='row'>
+                  <div class='col-6'>
+                    <img class='w-100' src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-1.jpg">
+                  </div>
+                  <div class='col-6'>
+                    <p>Price: 14$US</p>
+                    <p>Rate:
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                    </p>
+                    <p><span class="badge badge-pill badge-light">Unisex</span>
+                      <span class="badge badge-pill badge-light">Casual</span>
+                    </p>
+                    <a href="#" class="alert-link"> <svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-suit-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                      </svg> Add to wishlist</a>
+                  </div>
+                </div>
+                <hr>
+                <!-- Description and reviews 1 -->
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-Description-tab" data-toggle="tab"
+                      href="#nav-Description" role="tab" aria-controls="Description-home"
+                      aria-selected="true">Description</a>
+                    <a class="nav-item nav-link" id="nav-Reviews-tab" data-toggle="tab" href="#nav-Reviews" role="tab"
+                      aria-controls="nav-Reviews" aria-selected="false">Reviews</a>
+                  </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-Description" role="tabpanel"
+                    aria-labelledby="nav-Description-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p>Brown militar desing.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      </div>
+                      <div class="card-footer text-muted">
+                        Commented 15 days ago
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Review Item:</span>
+                      </div>
+                      <textarea class="form-control" aria-label="Review Item:"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal 2 -->
+        <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Snake texture</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Alert 2 -->
+                <div class="alert alert-warning" role="alert"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                  </svg>
+                  We're sorry :( Out of stock!
+                </div>
+                <!-- img and general info 2 -->
+                <div class='row'>
+                  <div class='col-6'>
+                    <img class='w-100' src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-4.jpg">
+                  </div>
+                  <div class='col-6'>
+                    <p>Price: 10$US</p>
+                    <p>Rate:
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                    </p>
+                    <p><span class="badge badge-pill badge-light">Men</span>
+                      <span class="badge badge-pill badge-light">Casual</span>
+                    </p>
+                    <a href="#" class="alert-link"> <svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-suit-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                      </svg> Add to wishlist</a>
+                  </div>
+                </div>
+                <hr>
+                <!-- Description and reviews 4 -->
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-Description-tab" data-toggle="tab"
+                      href="#nav-Description" role="tab" aria-controls="Description-home"
+                      aria-selected="true">Description</a>
+                    <a class="nav-item nav-link" id="nav-Reviews-tab" data-toggle="tab" href="#nav-Reviews" role="tab"
+                      aria-controls="nav-Reviews" aria-selected="false">Reviews</a>
+                  </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-Description" role="tabpanel"
+                    aria-labelledby="nav-Description-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p>Snake pattern with vibrant colours.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab">
+                    <div class="card">
+                      <div class="card-footer text-muted">
+                        No one has commented yet.
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Review Item:</span>
+                      </div>
+                      <textarea class="form-control" aria-label="Review Item:"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal 3 -->
+        <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Vinyl Horse</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- img and general info 3-->
+                <div class='row'>
+                  <div class='col-6'>
+                    <img class='w-100' src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-4.jpg">
+                  </div>
+                  <div class='col-6'>
+                    <p>Price: 15$US</p>
+                    <p>Rate:
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                      </svg>
+                    </p>
+                    <p><span class="badge badge-pill badge-light">Unisex</span>
+                      <span class="badge badge-pill badge-light">Casual</span>
+                    </p>
+                    <a href="#" class="alert-link"> <svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-suit-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                      </svg> Add to wishlist</a>
+                  </div>
+                </div>
+                <hr>
+                <!-- Description and reviews 3 -->
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-Description-tab" data-toggle="tab"
+                      href="#nav-Description" role="tab" aria-controls="Description-home"
+                      aria-selected="true">Description</a>
+                    <a class="nav-item nav-link" id="nav-Reviews-tab" data-toggle="tab" href="#nav-Reviews" role="tab"
+                      aria-controls="nav-Reviews" aria-selected="false">Reviews</a>
+                  </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-Description" role="tabpanel"
+                    aria-labelledby="nav-Description-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p>Vinyl horse shirt.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      </div>
+                      <div class="card-footer text-muted">
+                        Commented 1 days ago
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Review Item:</span>
+                      </div>
+                      <textarea class="form-control" aria-label="Review Item:"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal 4 -->
+        <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Aerosmith</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Alert 4 -->
+                <div class="alert alert-warning" role="alert"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                  </svg>
+                  We're sorry :( Out of stock!
+                </div>
+                <!-- img and general info 4 -->
+                <div class='row'>
+                  <div class='col-6'>
+                    <img class='w-100' src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-4.jpg">
+                  </div>
+                  <div class='col-6'>
+                    <p>Price: 15$US</p>
+                    <p>Rate:
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                    </p>
+                    <p><span class="badge badge-pill badge-light">Unisex</span>
+                      <span class="badge badge-pill badge-light">Casual</span>
+                    </p>
+                    <a href="#" class="alert-link"> <svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-suit-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                      </svg> Add to wishlist</a>
+                  </div>
+                </div>
+                <hr>
+                <!-- Description and reviews 4 -->
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-Description-tab" data-toggle="tab"
+                      href="#nav-Description" role="tab" aria-controls="Description-home"
+                      aria-selected="true">Description</a>
+                    <a class="nav-item nav-link" id="nav-Reviews-tab" data-toggle="tab" href="#nav-Reviews" role="tab"
+                      aria-controls="nav-Reviews" aria-selected="false">Reviews</a>
+                  </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-Description" role="tabpanel"
+                    aria-labelledby="nav-Description-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p>White shirt with Aerosmith logo.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      </div>
+                      <div class="card-footer text-muted">
+                        Commented 1 days ago
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Review Item:</span>
+                      </div>
+                      <textarea class="form-control" aria-label="Review Item:"></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal 5 -->
+        <div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog"
+          aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalCenterTitle">'La chilena'</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Alert 5 -->
+                <div class="alert alert-warning" role="alert"><svg width="1em" height="1em" viewBox="0 0 16 16"
+                    class="bi bi-info-circle-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                      d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412l-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
+                  </svg>
+                  We're sorry :( Out of stock!
+                </div>
+                <!-- img and general info 5 -->
+                <div class='row'>
+                  <div class='col-6'>
+                    <img class='w-100' src="https://s3.amazonaws.com/makeitreal/projects/e-commerce/camiseta-5.jpg">
+                  </div>
+                  <div class='col-6'>
+                    <p>Price: 15$US</p>
+                    <p>Rate:
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star-fill" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                      </svg>
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-star" fill="currentColor"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M2.866 14.85c-.078.444.36.791.746.593l4.39-2.256 4.389 2.256c.386.198.824-.149.746-.592l-.83-4.73 3.523-3.356c.329-.314.158-.888-.283-.95l-4.898-.696L8.465.792a.513.513 0 0 0-.927 0L5.354 5.12l-4.898.696c-.441.062-.612.636-.283.95l3.523 3.356-.83 4.73zm4.905-2.767l-3.686 1.894.694-3.957a.565.565 0 0 0-.163-.505L1.71 6.745l4.052-.576a.525.525 0 0 0 .393-.288l1.847-3.658 1.846 3.658a.525.525 0 0 0 .393.288l4.052.575-2.906 2.77a.564.564 0 0 0-.163.506l.694 3.957-3.686-1.894a.503.503 0 0 0-.461 0z" />
+                      </svg>
+                    </p>
+                    <p><span class="badge badge-pill badge-light">Niño</span>
+                      <span class="badge badge-pill badge-light">Deportiva</span>
+                    </p>
+                    <a href="#" class="alert-link"> <svg width="1em" height="1em" viewBox="0 0 16 16"
+                        class="bi bi-suit-heart" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                          d="M8 6.236l.894-1.789c.222-.443.607-1.08 1.152-1.595C10.582 2.345 11.224 2 12 2c1.676 0 3 1.326 3 2.92 0 1.211-.554 2.066-1.868 3.37-.337.334-.721.695-1.146 1.093C10.878 10.423 9.5 11.717 8 13.447c-1.5-1.73-2.878-3.024-3.986-4.064-.425-.398-.81-.76-1.146-1.093C1.554 6.986 1 6.131 1 4.92 1 3.326 2.324 2 4 2c.776 0 1.418.345 1.954.852.545.515.93 1.152 1.152 1.595L8 6.236zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.55 7.55 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z" />
+                      </svg> Add to wishlist</a>
+                  </div>
+                </div>
+                <hr>
+                <!-- Description and reviews 5 -->
+                <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-Description-tab" data-toggle="tab"
+                      href="#nav-Description" role="tab" aria-controls="Description-home"
+                      aria-selected="true">Description</a>
+                    <a class="nav-item nav-link" id="nav-Reviews-tab" data-toggle="tab" href="#nav-Reviews" role="tab"
+                      aria-controls="nav-Reviews" aria-selected="false">Reviews</a>
+                  </div>
+                </nav>
+
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-Description" role="tabpanel"
+                    aria-labelledby="nav-Description-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p>Black shirt with logo.</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-Reviews" role="tabpanel" aria-labelledby="nav-Reviews-tab">
+                    <div class="card">
+                      <div class="card-body">
+                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      </div>
+                      <div class="card-footer text-muted">
+                        Commented 2 days ago
+                      </div>
+                    </div>
+                    <hr>
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Review Item:</span>
+                      </div>
+                      <textarea class="form-control" aria-label="Review Item:"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+    integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
